@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aleph-recap"
+version = "0.1.0"
+description = "Turn an online lesson into a short, visual, offline Word recap."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Paolo Leoncini / Aleph Innovation" }]
+requires-python = ">=3.10"
+dependencies = [
+  "anthropic>=2.6",
+  "beautifulsoup4>=4.12",
+  "matplotlib>=3.8",
+  "playwright>=1.45",
+  "pydantic>=2.6",
+  "python-docx>=1.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+aleph-recap = "aleph_recap.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
